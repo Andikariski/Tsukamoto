@@ -27,32 +27,15 @@
 
 <?php
 include 'koneksi.php';
-if (isset($_POST['login'])) {
-    session_start();
-    $email  = $_POST['email'];
-    $pass  = ($_POST['password']);
+if (isset($_POST['register'])) {
+    $nama       = $_POST['nama'];
+    $email      = $_POST['email'];
+    $password   = $_POST['password'];
+    $nim        = $_POST['nim'];
+    $role       = 'mahasiswa';
 
-    $query = mysqli_query($koneksi, "SELECT * FROM data_user WHERE email = '$email' AND password = '$pass'");
-    $cek   = mysqli_num_rows($query);
-
-
-
-    if ($cek > 0) {
-        $data  = mysqli_fetch_assoc($query);
-        if ($data['role'] == 'admin') {
-            $_SESSION['akses']    = 'Login';
-            $_SESSION['id']       = $data['id_user'];
-            $_SESSION['email']     = $data['email'];
-            echo "<script>alert('Selamat Datang, anda login sebagai Admin');window.location='admin/index.php'</script>";
-        } else if ($data['role'] == 'mahasiswa') {
-            $_SESSION['akses']    = 'Login';
-            $_SESSION['id']       = $data['id_user'];
-            $_SESSION['email']     = $data['email'];
-            echo "<script>alert('Selamat Datang, anda login sebagai Mahasiswa');window.location='admin/index.php'</script>";
-        }
-    } else {
-        echo "<script>alert('Periksa Email dan Password Anda');window.location='index.php'</script>";
-    }
+    $simpan = mysqli_query($koneksi, "INSERT INTO data_user(nama,email,password,nim,role) VALUES('$nama','$email','$password','$nim','$role')");
+    echo "<script>alert('Anda berhasil melakukan registrasi');window.location='index.php'</script>";
 }
 ?>
 
@@ -71,7 +54,7 @@ if (isset($_POST['login'])) {
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="text" class="form-control" name="email" placeholder="Nama" required autofocus>
+                            <input type="text" class="form-control" name="nama" placeholder="Nama" required autofocus>
                         </div>
                     </div>
                     <div class="input-group">
@@ -95,12 +78,12 @@ if (isset($_POST['login'])) {
                             <i class="material-icons">person</i>
                         </span>
                         <div class="form-line">
-                            <input type="password" class="form-control" name="password" placeholder="Nim" required>
+                            <input type="text" class="form-control" name="nim" placeholder="Nim" required>
                         </div>
                     </div>
                     <div class="row">
                         <div class="text-center">
-                            <button class="btn bg-green waves-effect" type="submit" name="login" id="login">REGISTER</button>
+                            <button class="btn bg-green waves-effect" type="submit" name="register" id="register">REGISTER</button>
                         </div>
                     </div>
                 </form>
