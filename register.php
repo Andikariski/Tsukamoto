@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -65,7 +65,15 @@ if (isset($_POST['login'])) {
         <div class="card">
             <div class="body">
                 <form id="sign_in" method="POST" action="">
-                    <div class="msg">Sign in to start your session</div>
+                    <div class="msg">Register Now</div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="text" class="form-control" name="email" placeholder="Nama" required autofocus>
+                        </div>
+                    </div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">email</i>
@@ -82,15 +90,23 @@ if (isset($_POST['login'])) {
                             <input type="password" class="form-control" name="password" placeholder="Password" required>
                         </div>
                     </div>
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="material-icons">person</i>
+                        </span>
+                        <div class="form-line">
+                            <input type="password" class="form-control" name="password" placeholder="Nim" required>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="text-center">
-                            <button class="btn bg-pink waves-effect" type="submit" name="login" id="login">SIGN IN</button>
+                            <button class="btn bg-green waves-effect" type="submit" name="login" id="login">REGISTER</button>
                         </div>
                     </div>
                 </form>
                 <br>
                 <div class="msg m-2">
-                    <a href="register.php" class="m-2">Register</a>
+                    <a href="index.php" class="m-2">Login</a>
                 </div>
             </div>
         </div>
